@@ -6,6 +6,10 @@ const BlogSchema = new Schema({
   title: String,
   description: String,
   path: String,
+  status: {
+    type: Boolean,
+    default: true
+  },
   dateCreated: {
     type: Date,
     default: Date.now,

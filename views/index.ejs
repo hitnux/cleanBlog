@@ -3,6 +3,22 @@
 <body>
   <%- include('partials/_navigation'); -%>
 
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Clean Blog</h1>
+            <span class="subheading">A Blog Theme by Start Bootstrap</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
   <!-- Main Content -->
   <div class="container">
     <div class="row">
@@ -17,6 +33,10 @@
                 <%= blogs[i].description  %>
               </h3>
             </a>
+              <div>
+                <a href="/post/delete/<%= blogs[i].id %>" onclick="return confirm('ARE YOU SURE?')" class="text-danger">Delete</a>
+                <a href="/post/edit/<%= blogs[i].id %>" class="text-warning">Edit</a>
+              </div>
             <p class="post-meta">Posted by
               <a href="#">Start Bootstrap</a>
               on <%= blogs[i].dateCreated  %></p>
