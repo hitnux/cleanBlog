@@ -5,7 +5,7 @@ const ejs = require('ejs');
 const fileUpload = require('express-fileupload');
 const methodOverride = require('method-override');
 
-mongoose.connect('mongodb://localhost/cleanblog-test-db', {
+mongoose.connect('mongodb+srv://hitnus:15.htn.15@cluster0.nuzzr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false
@@ -25,7 +25,7 @@ app.use(fileUpload());
 // Controllers
 require('./lib/controllersLoader')(app);
 
-const port = 3000;
+const port = process.env.PORT || 5000
 app.listen(port, () => {
   console.log(`Sunucu ${port} portunda başlatıldı..`);
 });
