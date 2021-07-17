@@ -2,9 +2,18 @@ const Blog = require('../models/Blog');
 
 module.exports = app => {
     app.get('/', async  (req, res) => {
-        const blogs = await Blog.find({status : true});
+        const page = req.query.page || 1;   
+        const postsPerPage = 2;   
+        const totalPosts = await Blog.find({status : true}).countDocuments();
+        const blogs = await Blog.find({status : true})
+        .sort('-dateCreated')
+        .skip((page-1) * postsPerPage) 
+        .limit(postsPerPage);
         res.render('index', {
-          blogs
+          blogs,
+          current: page,
+          next: parseInt(page)+1,
+          pages: totalPosts/postsPerPage
         });
     });
     app.get('/post/:path', async  (req, res) => {

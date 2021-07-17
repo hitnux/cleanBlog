@@ -8,6 +8,7 @@ const methodOverride = require('method-override');
 mongoose.connect('mongodb://localhost/cleanblog-test-db', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false
 });
 
 //Template Engine

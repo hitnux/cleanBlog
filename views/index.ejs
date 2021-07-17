@@ -44,8 +44,10 @@
           <hr>
         <% } %>
         <!-- Pager -->
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+        <div class="clearfix">  
+          <% if (pages > current) { %>
+            <a class="btn btn-primary float-right" href="/?page=<%= next %>">Older Posts &rarr;</a>
+          <% } %>
         </div>
       </div>
     </div>
