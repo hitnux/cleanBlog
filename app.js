@@ -27,7 +27,13 @@ app.get('/addpost', async  (req, res) => {
   res.render('add_post');
 });
 
+app.get('/post/:path', async  (req, res) => {
+  const post = await Blog.findOne({path : req.params.path});
+  res.render('post', {post});
+});
+
 app.post('/newpost', async (req, res) => { 
+  req.body.path = req.body.title.replace(' ', '').toLowerCase();
   await Blog.create(req.body);
   res.redirect('/');
 });
